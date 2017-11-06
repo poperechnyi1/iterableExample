@@ -5,6 +5,8 @@ import "./itMapsLib.sol";
 
 contract User
 {
+  uint public sum = 0;
+
   using itMaps for itMaps.itMapAddressUint;
 
   itMaps.itMapAddressUint im_myAddressUintMap;
@@ -15,16 +17,33 @@ contract User
   }
 
 
-  function sumAllValues () public returns (uint){
-    uint sum = 0;
-    for(var i = 0; i<getSize(); i++ ){
-      sum += im_myAddressUintMap.getValueByIndex(i);
-    }
-    return sum;
+  // function sumAllValues () public returns (bool){    
+  //   for(uint i; i<im_myAddressUintMap.size(); i++ ){
+  //     // sum += im_myAddressUintMap.getValueByIndex(i);
+  //     sum += im_myAddressUintMap.get(im_myAddressUintMap.getKeyByIndex(i));
+  //   }
+
+  //   // for (uint i; i<self.keys.length; i++) {
+  //   //       delete self.data[ self.keys[i]];
+  //   // }
+  //   return true;
+  // }
+
+  
+
+  function getValueBYINDEX(uint _index) constant returns(uint){
+    return im_myAddressUintMap.getValueByIndex(_index);
+  }
+
+  function getKeyBYINDEX(uint _index) constant returns(address){
+    return im_myAddressUintMap.getKeyByIndex(_index);
+  }
+
+  function getValueByADDRESS(address _key) constant returns(uint){
+    return im_myAddressUintMap.get(_key);
   }
 
   function getSize() constant returns (uint size){
-    
     return im_myAddressUintMap.size();
   }
 
