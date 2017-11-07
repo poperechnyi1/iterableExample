@@ -34,6 +34,9 @@ contract User
 
 
   function sumAllOwners() returns(uint){
+    if(sum!=0){
+      sum = 0;
+    }
     for(uint i; i<im_myAddressUintMap.size(); i++){
       sum += im_myAddressUintMap.get(im_myAddressUintMap.getKeyByIndex(i));
     }
