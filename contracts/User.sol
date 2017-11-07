@@ -16,21 +16,6 @@ contract User
     return true;
   }
 
-
-  // function sumAllValues () public returns (bool){    
-  //   for(uint i; i<im_myAddressUintMap.size(); i++ ){
-  //     // sum += im_myAddressUintMap.getValueByIndex(i);
-  //     sum += im_myAddressUintMap.get(im_myAddressUintMap.getKeyByIndex(i));
-  //   }
-
-  //   // for (uint i; i<self.keys.length; i++) {
-  //   //       delete self.data[ self.keys[i]];
-  //   // }
-  //   return true;
-  // }
-
-  
-
   function getValueBYINDEX(uint _index) constant returns(uint){
     return im_myAddressUintMap.getValueByIndex(_index);
   }
@@ -45,6 +30,13 @@ contract User
 
   function getSize() constant returns (uint size){
     return im_myAddressUintMap.size();
+  }
+
+
+  function sumAllOwners() returns(uint){
+    for(uint i; i<im_myAddressUintMap.size(); i++){
+      sum += im_myAddressUintMap.get(im_myAddressUintMap.getKeyByIndex(i));
+    }
   }
 
   
